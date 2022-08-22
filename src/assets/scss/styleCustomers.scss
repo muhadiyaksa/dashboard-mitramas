@@ -1,0 +1,248 @@
+@import "../../assets/scss/colorVariabel.scss";
+
+.customers {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: $gray-100;
+  position: relative;
+  @media (min-width: 576px) {
+    padding-left: 80px;
+    padding-right: 30px;
+  }
+  @media (min-width: 768px) {
+    padding-left: 100px;
+    padding-right: 50px;
+  }
+  .customers-header {
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba($gray-400, 0.7);
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-height: 140px;
+      margin-right: 40px;
+      @media (min-width: 992px) {
+        max-height: 170px;
+        margin-right: 100px;
+      }
+    }
+    .total {
+      font-size: 14px;
+      p {
+        margin-bottom: 10px !important;
+        @media (min-width: 992px) {
+          margin-bottom: 0px !important;
+        }
+      }
+      span {
+        background-color: $tealnes;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 15px;
+        margin-left: 0px;
+        color: white;
+        @media (min-width: 992px) {
+          margin-left: 10px;
+        }
+      }
+      margin-bottom: 20px;
+    }
+    .detail-item {
+      border-radius: 10px;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-bottom: 0px;
+        font-size: 16px;
+      }
+      span {
+        font-size: 13px;
+      }
+      @media (min-width: 992px) {
+        border-radius: 10px;
+        padding: 10px 20px;
+        p {
+          margin-bottom: 0px;
+          font-size: 22px;
+        }
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+    .detail-active {
+      background-color: $teal;
+      margin-right: 10px;
+    }
+    .detail-non-active {
+      background-color: $gray-300;
+    }
+  }
+
+  .customers-body {
+    margin-top: 40px;
+    @mixin customers-item {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba($gray-400, 0.7);
+    }
+    .customers-sort {
+      @include customers-item();
+      margin-bottom: 20px;
+    }
+    .customers-filter {
+      @include customers-item();
+    }
+    .customers-array {
+      .input-group {
+        position: relative;
+        .clear {
+          position: absolute;
+          right: 15%;
+          z-index: 99;
+        }
+      }
+      @include customers-item();
+      .animasi-load {
+        @media (min-width: 992px) {
+          width: 100%;
+        }
+
+        p {
+          margin: 0;
+          font-size: 13px;
+          @media (min-width: 768px) {
+            font-size: 16px;
+          }
+        }
+        .loading {
+          border: 2px solid $teal;
+          border-radius: 2px;
+          padding: 3px;
+          position: relative;
+          overflow: hidden;
+          width: 250px;
+          margin: 0 auto;
+          @media (min-width: 768px) {
+            width: 300px;
+          }
+          p {
+            position: relative;
+            color: $teal;
+            font-weight: 600;
+            // animation-name: loadingColor;
+            // animation-duration: 5s;
+            // animation-iteration-count: infinite;
+            z-index: 2;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 1;
+            background-color: $teal;
+            transform: translateX(0) skewX(45deg);
+            animation-name: loadingBar;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            overflow: hidden;
+          }
+        }
+      }
+      .list-group {
+        // border: 1px solid $gray-200;
+        // padding: 7px 14px;
+        margin-top: 10px;
+        max-height: 500px;
+        overflow-y: scroll;
+        padding-right: 5px;
+        svg {
+          max-height: 16px;
+          min-width: 16px;
+        }
+        &::-webkit-scrollbar {
+          width: 5px;
+          @media (min-width: 992px) {
+            width: 6px;
+          }
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #e6e6e6;
+          border-radius: 8px;
+        }
+        p {
+          margin-bottom: 0px;
+        }
+        .name {
+          font-size: 16px;
+          font-weight: 600;
+          span {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: $teal;
+          }
+          //   background-color: $teal;
+        }
+        .jobtitle,
+        .notelp {
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .mini {
+          font-size: 13px;
+        }
+        .value-address {
+          font-size: 14px;
+        }
+        .status {
+          &.active {
+            background-color: $teal;
+            color: white;
+            font-weight: 600;
+          }
+          @media (min-width: 768px) {
+            font-size: 11px;
+          }
+          @media (min-width: 992px) {
+            font-size: 14px;
+          }
+          background-color: $gray-200;
+          color: $gray-800;
+          border-radius: 5px;
+          padding: 6px 10px;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@keyframes loadingBar {
+  25% {
+    transform: translateX(100%) skewX(0deg);
+    // transform: scale(1.2);
+  }
+  50% {
+    transform: translateX(0) skewX(-45deg);
+  }
+  75% {
+    transform: translateX(-100%) skewX(0deg);
+  }
+  100% {
+    transform: translateX(0%) skewX(45deg);
+  }
+}

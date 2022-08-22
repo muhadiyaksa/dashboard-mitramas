@@ -1,0 +1,90 @@
+@import "../../assets/scss/colorVariabel.scss";
+
+@mixin setup-button {
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 17px;
+  border: none;
+  transition: 0.3s;
+  @media (min-width: 576px) {
+    font-size: 12px;
+  }
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+.btn-primary {
+  background-color: $tealnes;
+  color: $white;
+  @include setup-button();
+
+  &:hover {
+    background-color: rgba($tealnes, 0.8) !important;
+  }
+
+  &.after-element::after {
+    content: "";
+    display: block;
+    background-color: $tealnes;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7px;
+    height: 100%;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+  color: $white;
+  padding: 4px 15px;
+  @include setup-button();
+}
+.btn-gray {
+  background-color: $gray-300;
+  color: $gray-800;
+  padding: 4px 15px;
+  @include setup-button();
+}
+.btn-white {
+  background-color: $white;
+  color: $gray-700;
+  @include setup-button();
+
+  &:hover {
+    background-color: rgba($gray-300, 0.3) !important;
+  }
+  &.active {
+    position: relative;
+    background-color: $gray-100;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background-color: $tealnes;
+    }
+  }
+}
+
+.animation {
+  background-color: rgba($teal, 0.6);
+  border-radius: 0px;
+  transition: all 300ms ease-in-out;
+  animation-name: wideeffect;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+}
+@keyframes wideeffect {
+  50% {
+    background-color: white;
+    // transform: scale(1.2);
+  }
+  100% {
+    background-color: rgba($teal, 0.6);
+  }
+}
