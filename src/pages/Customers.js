@@ -293,7 +293,7 @@ export default function Customers() {
     if (e.target.checked) {
       if ((arrayCustomersFilter.active.length === 0) ^ (arrayCustomersFilter.nonActive.length === 0)) {
         console.log("kesini");
-        setArrayCustomersFilter({ active: [], nonActive: [] });
+        setArrayCustomersFilter({ active: [], nonActive: [], filter: [] });
       } else {
         console.log("kesini nih");
         let dataFilter = arrayCustomers.filter((el) => el.status === true);
@@ -302,17 +302,17 @@ export default function Customers() {
     } else {
       //true                                         //true
       if ((arrayCustomersFilter.active.length > 0) ^ (arrayCustomersFilter.nonActive.length > 0)) {
-        setArrayCustomersFilter({ active: [], nonActive: [] });
+        setArrayCustomersFilter({ active: [], nonActive: [], filter: [] });
       } else {
         let dataFilter2 = arrayCustomers.filter((el) => el.status === false);
-        setArrayCustomersFilter({ active: [], nonActive: dataFilter2 });
+        setArrayCustomersFilter({ active: [], nonActive: dataFilter2, filter: [] });
       }
     }
   };
   const filterForNonActive = (e) => {
     if (e.target.checked) {
       if ((arrayCustomersFilter.active.length === 0) ^ (arrayCustomersFilter.nonActive.length === 0)) {
-        setArrayCustomersFilter({ active: [], nonActive: [] });
+        setArrayCustomersFilter({ active: [], nonActive: [], filter: [] });
       } else {
         let dataFilter = arrayCustomers.filter((el) => el.status === false);
         setArrayCustomersFilter({ ...arrayCustomersFilter, nonActive: dataFilter });
@@ -320,11 +320,11 @@ export default function Customers() {
     } else {
       if ((arrayCustomersFilter.active.length > 0) ^ (arrayCustomersFilter.nonActive.length > 0)) {
         console.log("kesini apa ya");
-        setArrayCustomersFilter({ active: [], nonActive: [] });
+        setArrayCustomersFilter({ active: [], nonActive: [], filter: [] });
       } else {
         console.log("kesini keknya");
         let dataFilter2 = arrayCustomers.filter((el) => el.status === true);
-        setArrayCustomersFilter({ active: dataFilter2, nonActive: [] });
+        setArrayCustomersFilter({ active: dataFilter2, nonActive: [], filter: [] });
       }
     }
   };
@@ -365,7 +365,7 @@ export default function Customers() {
       } else {
         if (arrayCustomers?.length > 0) {
           let data =
-            arrayCustomersFilter.filter.length > 0
+            arrayCustomersFilter?.filter.length > 0
               ? arrayCustomersFilter.filter
               : (arrayCustomersFilter.active.length > 0) ^ (arrayCustomersFilter.nonActive.length > 0)
               ? [...arrayCustomersFilter.active, ...arrayCustomersFilter.nonActive]
