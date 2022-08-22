@@ -1,4 +1,4 @@
-# WEB FOT TEST
+# WEB FOR TEST
 ##### Created By Muhamad Adi Yaksa
 <hr>
 
